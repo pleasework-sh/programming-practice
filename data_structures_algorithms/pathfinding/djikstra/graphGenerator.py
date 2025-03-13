@@ -1,12 +1,9 @@
 import random
 import requests
-from datetime import datetime
-import secrets
-
 
 class graphGenerator:
-
     # TODO: Figure out how to write better documentation here
+    # What is best practice? 
     # nNodes: number of nodes we want in the graph
     # min: minimum cost
     # max: maximum cost
@@ -25,7 +22,9 @@ class graphGenerator:
 
         print(random_values)
 
-        # TODO: 
+        # TODO: figure out how to get the random object working. 
+        # the problem was, I kept running into each row having the same value
+        # so I need to fix that... 
         random.seed()
         # to populate the matrix with random distances
         for i in range(nNodes):
@@ -43,9 +42,12 @@ class graphGenerator:
             print(f"Looping... {i}")
 
             for j in range(nNodes):
+                # TODO: This is good enough for now
+                # but there has to be a better way to do this...
+                random_value_index = i * nNodes + j
                 print(f"Current value of j... {j}")
                
-                self.adjMatrix[i][j] = random.randint(0,1000)
+                self.adjMatrix[i][j] = random_values[random_value_index]
 
     def __str__(self):
 
